@@ -6,18 +6,19 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sumuzu.mentoringpaging3.databinding.ItemPlayerBinding
-import com.sumuzu.mentoringpaging3.model.DataItem
+import com.sumuzu.mentoringpaging3.model.Data
+//import com.sumuzu.mentoringpaging3.model.DataItem
 
-class PlayerAdapter : PagingDataAdapter<DataItem, PlayerAdapter.PlayerHolder>(playerDiffUtil()) {
+class PlayerAdapter : PagingDataAdapter<Data, PlayerAdapter.PlayerHolder>(playerDiffUtil()) {
 
     //buat
-    class playerDiffUtil : DiffUtil.ItemCallback<DataItem>(){
-        override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+    class playerDiffUtil : DiffUtil.ItemCallback<Data>(){
+        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
 
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
 
             return oldItem == newItem
         }
@@ -26,11 +27,11 @@ class PlayerAdapter : PagingDataAdapter<DataItem, PlayerAdapter.PlayerHolder>(pl
 
     //buat
     class PlayerHolder(var binding : ItemPlayerBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item: DataItem?) {
+        fun bind(item: Data?) {
 
             binding.tvFirstName.text = item?.firstName
-            binding.tvLastName.text = item?.position
-            binding.tvPosition.text = item?.team?.city
+            binding.tvLastName.text = item?.lastName
+            binding.tvPosition.text = item?.position
         }
 
     }

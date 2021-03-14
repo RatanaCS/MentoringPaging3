@@ -3,17 +3,18 @@ package com.sumuzu.mentoringpaging3.dataSource
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.sumuzu.mentoringpaging3.model.DataItem
+import com.sumuzu.mentoringpaging3.model.Data
+//import com.sumuzu.mentoringpaging3.model.DataItem
 import com.sumuzu.mentoringpaging3.network.ApiService
 import com.sumuzu.mentoringpaging3.network.ModuleNetwork
 
-class PlayerDataSource(var api : ApiService) : PagingSource<Int, DataItem>() {
-    override fun getRefreshKey(state: PagingState<Int, DataItem>): Int? {
+class PlayerDataSource(var api : ApiService) : PagingSource<Int, Data>() {
+    override fun getRefreshKey(state: PagingState<Int, Data>): Int? {
 
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataItem> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
 
         return try {
             //untuk ambil current page
@@ -27,7 +28,7 @@ class PlayerDataSource(var api : ApiService) : PagingSource<Int, DataItem>() {
             LoadResult.Page(
                 response.data,
                 prevKey = if(nextPage == 1) null else nextPage - 1,
-                nextKey = if(nextPage == response.meta?.totalPages) null else nextPage + 1
+                nextKey = if(nextPage == response.meta.totalPages) null else nextPage + 1
             )
 
 

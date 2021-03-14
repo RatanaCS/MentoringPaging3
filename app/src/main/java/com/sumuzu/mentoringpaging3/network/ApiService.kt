@@ -1,6 +1,7 @@
 package com.sumuzu.mentoringpaging3.network
 
-import com.sumuzu.mentoringpaging3.model.Players
+//import com.sumuzu.mentoringpaging3.model.Players
+import com.sumuzu.mentoringpaging3.model.Players1
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,6 +11,6 @@ interface ApiService {
     suspend fun getPlayer(
         @Query("page") page : Int,
         @Query("per_page") per_page : Int
-    ) : Players
+    ) : Players1
 
 }
