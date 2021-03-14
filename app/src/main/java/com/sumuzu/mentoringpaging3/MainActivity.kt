@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         binding?.listPlayer?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
 //            setHasFixedSize(true)
-            adapter = adapterPlayer
+//            adapter = adapterPlayer
 
         }
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 //                }
 //        )
 
-//        binding.listPlayer.adapter = adapterPlayer
+        binding?.listPlayer?.adapter = adapterPlayer
 
     }
 
